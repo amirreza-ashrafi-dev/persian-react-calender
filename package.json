@@ -1,0 +1,39 @@
+{
+  "name": "persian-cal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "node ./build/index.js",
+    "genDec": "npx tsc --declaration  --emitDeclarationOnly --declarationDir ./src/declaration-dir/  ./src/calender/index.ts --jsx react-jsx --skipLibCheck true --esModuleInterop true",
+    "copyFile": "cp -i src/declaration-dir/calender.d.ts ./dist/index.d.ts",
+    "prod": "concurrently \"npm run build\" \"npm run genDec\" \"cp -i src/declaration-dir/calender.d.ts ./dist/index.d.ts \" \"cp -i src/declaration-dir/types.d.ts ./dist/types.ts \""
+  },
+  "dependencies": {
+    "jalali-moment": "^3.3.11"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.0.1",
+    "esbuild": "^0.17.19",
+    "esbuild-node-externals": "^1.7.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
+  }
+}
