@@ -1,8 +1,8 @@
-### miminal and fully customizeable calender
+### miminal and fully customizable calender
 ![persian calender overview](/assets/Capture.JPG)
 
 #### installation :
-### `npm i persian-cal`
+### `npm i persian-react-calender`
 
 #### usage : 
 ```typescript
