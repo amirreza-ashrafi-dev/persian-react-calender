@@ -7,8 +7,8 @@
 #### usage : 
 ```typescript
 import type { CSSProperties } from 'react';
-import { Calender } from "persian-cal";
-import { DayColumn, weekColumn, Header } from 'persian-cal/types';
+import { Calender } from "persian-react-calender";
+import { DayColumn, weekColumn, Header } from 'persian-react-calender/types';
 
 
 const styles: CSSProperties = {
