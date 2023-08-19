@@ -1,15 +1,19 @@
 ### miminal and fully customizable calender
+
 ![persian calender overview](/assets/Capture.JPG)
 
 #### installation :
+
 ### `npm i persian-react-calender`
 
-#### usage : 
-```typescript
-import type { CSSProperties } from 'react';
-import { Calender } from "persian-react-calender";
-import { DayColumn, weekColumn, Header } from 'persian-react-calender/types';
+#### usage :
 
+#### typescript users :
+
+```typescript
+import type { CSSProperties } from "react";
+import { Calender } from "persian-react-calender";
+import { DayColumn, weekColumn, Header } from "persian-react-calender/types";
 
 const styles: CSSProperties = {
   width: "80px",
@@ -21,56 +25,128 @@ const styles: CSSProperties = {
   margin: "5px",
   borderRadius: "10px",
   backgroundColor: "#38598b",
-  color: "black"
+  color: "black",
 };
 
 const dayNumberStyle: CSSProperties = {
   ...styles,
   backgroundColor: "#a2a8d3",
-}
+};
 
 const HeaderStyle: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
-  width: "100%"
-}
+  width: "100%",
+};
 
+const WeekColumn: weekColumn = ({ name }) => {
+  return <div style={styles}>{name}</div>;
+};
 
-const WeekColumn : weekColumn = ({ name }) => {
-  return <div style={styles}>{name}</div>
-}
-
-const DayColumn: DayColumn = (
-  { dayNumber,
-    month,
-    year,
-    currentDate
-  }) => {
+const DayColumn: DayColumn = ({ dayNumber, month, year, currentDate }) => {
   return (
-    <div style={{ ...dayNumberStyle, backgroundColor: currentDate ? "#e84a5f" : "#a2a8d3" }}
-      onClick={() => console.log({ dayNumber, month, year })}>{dayNumber}</div>
-  )
-}
+    <div
+      style={{
+        ...dayNumberStyle,
+        backgroundColor: currentDate ? "#e84a5f" : "#a2a8d3",
+      }}
+      onClick={() => console.log({ dayNumber, month, year })}
+    >
+      {dayNumber}
+    </div>
+  );
+};
 
-const Header : Header = ({ month, year, prevHandle, nextHandle }) => {
+const Header: Header = ({ month, year, prevHandle, nextHandle }) => {
   return (
     <div style={HeaderStyle}>
       <button onClick={nextHandle}>Next</button>
-      <div><b>{year}</b> {month}</div>
+      <div>
+        <b>{year}</b> {month}
+      </div>
       <button onClick={prevHandle}>Prev</button>
     </div>
-  )
-}
-
+  );
+};
 
 function App() {
   return (
     <>
       <Calender WeekColumn={WeekColumn} DayColumn={DayColumn} Header={Header} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+```
 
+#### javascript users :
+
+```javascript
+import type { CSSProperties } from "react";
+import { Calender } from "persian-react-calender";
+
+const styles = {
+  width: "80px",
+  height: "50px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "1px solid",
+  margin: "5px",
+  borderRadius: "10px",
+  backgroundColor: "#38598b",
+  color: "black",
+};
+
+const dayNumberStyle = {
+  ...styles,
+  backgroundColor: "#a2a8d3",
+};
+
+const HeaderStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  width: "100%",
+};
+
+const WeekColumn = ({ name }) => {
+  return <div style={styles}>{name}</div>;
+};
+
+const DayColumn = ({ dayNumber, month, year, currentDate }) => {
+  return (
+    <div
+      style={{
+        ...dayNumberStyle,
+        backgroundColor: currentDate ? "#e84a5f" : "#a2a8d3",
+      }}
+      onClick={() => console.log({ dayNumber, month, year })}
+    >
+      {dayNumber}
+    </div>
+  );
+};
+
+const Header = ({ month, year, prevHandle, nextHandle }) => {
+  return (
+    <div style={HeaderStyle}>
+      <button onClick={nextHandle}>Next</button>
+      <div>
+        <b>{year}</b> {month}
+      </div>
+      <button onClick={prevHandle}>Prev</button>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <>
+      <Calender WeekColumn={WeekColumn} DayColumn={DayColumn} Header={Header} />
+    </>
+  );
+}
+
+export default App;
 ```
