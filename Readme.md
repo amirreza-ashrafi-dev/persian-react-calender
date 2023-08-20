@@ -83,7 +83,6 @@ export default App;
 #### javascript users :
 
 ```javascript
-import type { CSSProperties } from "react";
 import { Calender } from "persian-react-calender";
 
 const styles = {
